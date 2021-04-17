@@ -36,6 +36,18 @@ class Solution {
         }
         return dp[n] // Final value in the array.
     }
+    
+    func climbingStairsOptimised(_ n: Int) -> Int {
+        var a = 1 // f[0] = 1
+        var b = 1 // f[1] = 1
+        var c = 0
+        for _ in 2..<n+1 {
+            c = a + b // Recurrance relation
+            a = b
+            b = c
+        }
+        return c // Final value in the array.
+    }
 }
 
 class SolutionTests: XCTestCase {
@@ -63,6 +75,27 @@ class SolutionTests: XCTestCase {
         let arg = 7
         let output = 21
         let result = solution.climbingStairs(arg)
+        XCTAssertEqual(output, result)
+    }
+    
+    func test4() {
+        let arg = 5
+        let output = 8
+        let result = solution.climbingStairsOptimised(arg)
+        XCTAssertEqual(output, result)
+    }
+    
+    func test5() {
+        let arg = 6
+        let output = 13
+        let result = solution.climbingStairsOptimised(arg)
+        XCTAssertEqual(output, result)
+    }
+    
+    func test6() {
+        let arg = 7
+        let output = 21
+        let result = solution.climbingStairsOptimised(arg)
         XCTAssertEqual(output, result)
     }
 }
